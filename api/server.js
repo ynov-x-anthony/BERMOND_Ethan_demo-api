@@ -3,6 +3,7 @@
 /*
  * demo-api - mini API "catalogue" pour le fil rouge des quetes Docker.
  * Metier volontairement trivial : toute la difficulte est sur Docker.
+ * (test du cache Docker : seul ce commentaire change)
  *
  * Variables d'environnement :
  *   PORT             port d'ecoute                    (def: 3000)

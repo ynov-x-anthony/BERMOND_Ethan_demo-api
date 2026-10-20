@@ -11,7 +11,7 @@ sur le code applicatif.
 ## Point de départ
 
 Ce dossier est ce que tu clones **avant ta première quête Docker**. Il n'y a
-volontairement **aucun fichier Docker** dedans, ni `Dockerfile`, ni
+volontairement **aucun fichier Docker** dedans, ni `api/Dockerfile`, ni
 `compose.yml` : ce sont précisément les fichiers que tu vas écrire, quête
 après quête, en faisant grossir ce dépôt.
 
@@ -73,7 +73,7 @@ et c'est lui qui sera évalué, pas le starter.
 | Les volumes | un volume nommé pour la persistance de PostgreSQL |
 | Les réseaux | des réseaux dédiés, la base jamais exposée directement |
 | Compose | `compose.yml`, `.env.example` : tous les services démarrent ensemble |
-| Dockerfile et sécurité | ton `Dockerfile` durci : utilisateur non-root, `HEALTHCHECK` |
+| Dockerfile et sécurité | ton `api/Dockerfile` durci : utilisateur non-root, `HEALTHCHECK` |
 | Builds multi-étapes et gestion des secrets | `api/Dockerfile.multi` : image allégée, secrets hors de l'image |
 | Analyse de vulnérabilité avec Trivy | un pipeline CI qui scanne ton image et bloque sur les failles critiques |
 
