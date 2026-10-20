@@ -50,4 +50,4 @@ demo-api:1.0   d41f68a7df6f        252MB         63.2MB
 ## Liens
 
 - Repo GitHub : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api
-- Image publiée : _à compléter après le push_
+- Image publiée :https://hub.docker.com/repository/docker/nahteb123456/demo-api/general
