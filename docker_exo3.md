@@ -1,4 +1,4 @@
-# Étape 5 : Durcir demo-api
+# Quête 3 : Dockerfile et sécurité
 
 ## Résumé des actions effectuées
 
