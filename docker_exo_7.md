@@ -1,4 +1,4 @@
-# Projet demo-api — Stack Docker Compose (Étape 4)
+# Quête 7 : Docker - Compose
 
 Déploiement complet de la stack `demo-api` (API Node.js, PostgreSQL 16 et Adminer) orchestrée avec Docker Compose, incluant l'isolation réseau, la persistance des données, les healthchecks et la gestion des mots de passe via Docker Secrets.
 
