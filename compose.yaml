@@ -1,0 +1,58 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-demo}
+      POSTGRES_DB: ${POSTGRES_DB:-demo}
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-demo} -d ${POSTGRES_DB:-demo}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - demo_back
+
+  api:
+    build: ./api
+    ports:
+      - "${API_PORT:-8080}:3000"
+    environment:
+      PGHOST: db
+      PGUSER: ${POSTGRES_USER:-demo}
+      PGDATABASE: ${POSTGRES_DB:-demo}
+      PGPASSWORD: ${PGPASSWORD:-demo}
+    secrets:
+      - db_password
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - demo_front
+      - demo_back
+
+  adminer:
+    image: adminer:4
+    ports:
+      - "${ADMINER_PORT:-8081}:8080"
+    depends_on:
+      - db
+    networks:
+      - demo_back
+
+volumes:
+  pgdata:
+
+networks:
+  demo_front:
+  demo_back:
+
+secrets:
+  db_password:
+    file: ./db_password.txt
