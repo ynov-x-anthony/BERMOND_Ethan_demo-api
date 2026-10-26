@@ -1,4 +1,4 @@
-# Étape 7 : Scanner demo-api et brancher la gate en CI
+# Quête 8 : Docker - Analyse de vulnérabilité avec Trivy
 
 ## Résumé des actions effectuées
 
