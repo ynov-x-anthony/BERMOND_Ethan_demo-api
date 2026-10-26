@@ -105,11 +105,15 @@ Total: 10 (HIGH: 10, CRITICAL: 0)
 
 ### 1. Run ROUGE (Échec de la gate sur image vulnérable)
 
-- **Run GitHub Actions ROUGE (régression)** : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/actions/runs/<ID_RUN_ROUGE>
+- **Run GitHub Actions ROUGE (Tag `v1.0.0-fail` / Commit `e10ffd6`)** :
+  - Run Actions : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/actions?query=branch%3Av1.0.0-fail
+  - Commit associé : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/commit/e10ffd6
 
 ### 2. Run VERT (Succès de la gate après correction des CVE)
 
-- **Run GitHub Actions VERT (corrigé)** : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/actions/runs/<ID_RUN_VERT>
+- **Run GitHub Actions VERT (Tag `v-1-0-1` / Commit `9ad9b74`)** :
+  - Run Actions : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/actions?query=branch%3Av-1-0-1
+  - Commit associé : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/commit/9ad9b74
 
 ---
 
