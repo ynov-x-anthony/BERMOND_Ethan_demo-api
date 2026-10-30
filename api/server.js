@@ -8,6 +8,7 @@
  * Variables d'environnement :
  *   PORT             port d'ecoute                    (def: 3000)
  *   VERSION          renvoyee par "/" et /version     (def: "dev")
+ *   NOTIFIER_URL     URL du service notifier          (def: "http://notifier:3001/notify")
  *   PG*              connexion PostgreSQL (voir db.js)
  */
 
@@ -16,6 +17,7 @@ const db = require('./db');
 
 const PORT = Number(process.env.PORT || 3000);
 const VERSION = process.env.VERSION || 'dev';
+const NOTIFIER_URL = process.env.NOTIFIER_URL || 'http://notifier:3001/notify';
 
 const app = express();
 app.use(express.json());
@@ -64,7 +66,20 @@ app.post('/products', async (req, res) => {
     return res.status(400).json({ error: 'name (string) et price_cents (entier >= 0) requis' });
   }
   try {
-    res.status(201).json(await db.addProduct(name, priceCents));
+    const product = await db.addProduct(name, priceCents);
+
+    // Appel best-effort vers notifier : ne bloque pas la reponse 201 si notifier est absent/down
+    fetch(NOTIFIER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event: 'product_created', product }),
+    }).catch((err) => {
+      console.warn(JSON.stringify({
+        level: 'warn', msg: 'notifier unreachable (best-effort)', err: err.message,
+      }));
+    });
+
+    res.status(201).json(product);
   } catch (err) {
     res.status(503).json({ error: 'db_unavailable', detail: err.message });
   }

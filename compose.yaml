@@ -18,7 +18,17 @@ services:
     networks:
       - demo_back
 
+  notifier:
+    image: ${NOTIFIER_IMAGE:-demo-notifier:local}
+    build: ./notifier
+    environment:
+      PORT: 3001
+    restart: unless-stopped
+    networks:
+      - demo_back
+
   api:
+    image: ${API_IMAGE:-demo-api:local}
     build: ./api
     ports:
       - "${API_PORT:-8080}:3000"
@@ -27,6 +37,7 @@ services:
       PGUSER: ${POSTGRES_USER:-demo}
       PGDATABASE: ${POSTGRES_DB:-demo}
       PGPASSWORD: ${PGPASSWORD:-demo}
+      NOTIFIER_URL: http://notifier:3001/notify
     secrets:
       - db_password
     depends_on:
