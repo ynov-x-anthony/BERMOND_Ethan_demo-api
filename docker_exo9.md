@@ -327,5 +327,5 @@ Content-Type: application/json; charset=utf-8
 ## 4. Liens
 
 - **Repo GitHub** : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api
-- **Run GitHub Actions vert (Matrix `api` + `notifier` + job `deploy` sur tag `v1.1.0`)** : https://github.com/ynov-x-anthony/BERMOND_Ethan_demo-api/actions?query=branch%3Av1.1.0
+- **Run GitHub Actions vert (Matrix `api` + `notifier` + job `deploy` sur tag `v1.1.0`)** :
 - **Packages GHCR (`api` & `notifier`)** : https://github.com/orgs/ynov-x-anthony/packages?repo_name=BERMOND_Ethan_demo-api
